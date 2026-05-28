@@ -72,5 +72,93 @@ Se definió un menú pegadizo (position: sticky) para facilitar la navegación m
 Se creó una paleta de colores profesionales con base en azules (#005f73 - #0a9396) propia para la idoneidad médica.
 Se optimizó para resoluciones mayores a 1024px utilizando contenedores y unidades relativas, junto a un media query base responsivo..
 
-3. Una explicacion: el codigo esta estructurafo de buena manera, tal cual como se lo pedi sin grandes errores que destacar
-4. Si modificaste la sugerencia, explica que cambiaste y por que: No, porque considero estar sastifecho con el resultado
+3. Una explicacion: el codigo esta estructurafo de buena manera, tal cual como se lo pedi sin grandes errores que destacar.
+
+4. Si modificaste la sugerencia, explica que cambiaste y por que: No, porque considero estar sastifecho con el resultado.
+
+Etapa 2:  Formulario de Solicitud de Turno (HTML + CSS)
+
+1. El prompt: en turnos.html y  css/turnos.css.
+
+Desarrolla el formulario de solicitud de turno en el archivo turnos.html. El formulario debe estar organizado
+en secciones claramente diferenciadas y utilizar los elementos semanticos de HTML5 correctamente.
+
+**Estructura del formulario:
+Organiza el formulario en cuatro secciones usando <fieldset> y <legend>:
+Seccion 1: Datos del Paciente
+Campos requeridos:
+a) Nombre (type="text")
+b) Apellido (type="text")
+c) DNI (type="text")
+d) Correo electronico (type="email")
+e) Telefono (type="tel")
+f) Fecha de nacimiento (type="date")
+g) Genero (select): Masculino / Femenino / Otro / Prefiero no especificar
+Seccion 2: Datos del Turno
+Campos requeridos:
+h) Especialidad (select): Clinica General, Cardiologia, Pediatria, Ginecologia, Traumatologia,
+Neurologia.
+i) Medico (select): Las opciones deben cambiar segun la especialidad seleccionada. Incluye al menos
+2 medicos por especialidad. Este campo se habilita solo cuando hay una especialidad seleccionada.
+j) Tipo de consulta (select): Primera consulta / Control / Resultado de estudios.
+k) Fecha del turno (type="date").
+l) Hora del turno (type="time").
+m) Modalidad (select): Presencial / Videoconsulta.
+n) Plataforma preferida (select): Zoom / Google Meet / Teams. VISIBLE SOLO si la modalidad es
+"Videoconsulta".
+Seccion 3: Cobertura Medica
+Campos requeridos:
+o) Cobertura (select): OSDE / Swiss Medical / Galeno / IOMA / Medicus / Sancor Salud / Particular.
+p) Numero de credencial (type="text"): VISIBLE SOLO si la cobertura NO es "Particular".
+q) Plan (type="text"): VISIBLE SOLO si la cobertura NO es "Particular".
+Evaluacion Sumativa 2 | Programacion Web | SaludPlus
+Pagina 6 de 10
+Seccion 4: Informacion Adicional
+Campos requeridos:
+r) Primera visita (type="checkbox"): "Es la primera vez que consulta en SaludPlus". Al marcar esta
+opcion, se muestra el campo "Como nos conocio".
+s) Como nos conocio (select): Busqueda en internet / Recomendacion de un conocido / Redes
+sociales / Otro. VISIBLE SOLO si el checkbox anterior esta marcado.
+t) Motivo de consulta (textarea, rows="4"): Descripcion del motivo de la consulta.
+u) Estudios previos (type="checkbox"): "Tiene estudios previos relacionados con la consulta". Al
+marcar esta opcion, se muestra el campo "Descripcion de estudios".
+v) Descripcion de estudios (textarea, rows="3"): VISIBLE SOLO si el checkbox anterior esta marcado.
+Boton de envio
+• Boton type="submit" con texto "Solicitar Turno".
+• Boton type="reset" con texto "Limpiar formulario".
+Requisitos de estructura HTML
+• Cada campo debe tener su etiqueta <label> con el atributo for correspondiente.
+• Los grupos de campos deben estar dentro de <fieldset> con su respectivo <legend>.
+• Usar los tipos de input correctos (email, tel, date, time, text, checkbox).
+• Agregar atributo placeholder descriptivo donde corresponda.
+• Los campos de la Seccion 2 que dependen de la especialidad deben usar el atributo disabled y
+cambiar a enabled con JavaScript.
+Requisitos de estilos:
+• Formulario centrado en pantalla, con ancho maximo de 800px.
+• Cada seccion (fieldset) debe tener estilos visuales diferenciados (borde, fondo suave).
+• Los campos ocultos deben tener display: none; por defecto en CSS.
+• Aplicar estilos de hover y focus en los campos del formulario.
+
+2. La respuesta o sugerencia que recibiste : He implementado correctamente el formulario de solicitud de turno en turnos.html y sus respectivos estilos en turnos.css.
+
+Aquí están los detalles de lo que está incluido según las especificaciones:
+
+Estructura HTML (turnos.html):
+
+Organizado en 4 secciones claramente diferenciadas utilizando <fieldset> y <legend>.
+Incluye todos los campos referidos en el enunciado, empleando una amplia variedad de especificaciones input de HTML5 (text, email, tel, date, time, y disabled nativo en el select de médicos).
+Se han relacionado correctamente los <label> con sus inputs a través del atributo for.
+Se incluyen placeholders en varios de los campos para ayudar al usuario con el formato o esperado (por ejemplo, con el DNI).
+Botón type="submit" ("Solicitar Turno") y type="reset" ("Limpiar formulario").
+Estilos CSS (turnos.css):
+
+El formulario tiene un máximo de 800px y se encuentra perfectamente centrado tanto en móviles como en escritorio.
+Cada sección (fieldset) tiene un estilo que acentúa la diferenciación del contenido gracias a colores de fondo suaves (#fafafa) y un resalte sutil en el <legend>.
+Se configuraron los eventos :hover y :focus en los inputs y textareas (resalta la capa activa con azul verdoso).
+Aquellos campos que la consigna indica como condicionales (el plan de cobertura, la videollamada, etc.) cuentan con el div contenedor con la clase .hidden { display: none !important; }, lo cual asegura que están ocultos por defecto hasta que se desarrollen los scripts para habilitarlos.
+Nota: Puse un archivo base validaciones.js vinculado al final de turnos.html para el comportamiento dinámico del formulario (ocultar/mostrar campos y habilitar/deshabilitar dependientes) el cual puedes realizar después.
+
+¿Te gustaría continuar con la validación en JavaScript para añadir la interactividad al formulario?
+
+3. Una explicacion con tus propias palabras de lo que hizo el codigo sugerido: Interesante muy grato de como hizo el formulario, de manera limpia y con buena estructura.
+4. Si modificaste la sugerencia, explica que cambiaste y por que: No, ya que conisdero de que no hubo cambios que agregar.
