@@ -163,6 +163,8 @@ Nota: Puse un archivo base validaciones.js vinculado al final de turnos.html par
 3. Una explicacion con tus propias palabras de lo que hizo el codigo sugerido: Interesante muy grato de como hizo el formulario, de manera limpia y con buena estructura.
 4. Si modificaste la sugerencia, explica que cambiaste y por que: No, ya que conisdero de que no hubo cambios que agregar.
 
+Etapa 3: Validaciones JavaScript.
+
 1. El prompt exacto que enviaste a GitHub Copilot: en js/validaciones.js.
 
 **Implementa todas las validaciones del formulario en el archivo js/validaciones.js. Las validaciones deben
@@ -270,3 +272,48 @@ El flujo completo se encuentra operativo y el ejercicio debería estar funcional
 3. Una explicacion con tus propias palabras de lo que hizo el codigo sugerido: El codigo que implemento, comples con las caondiciones/paremetros, estuve revisando y las validaciones funcionan correctamente.
 
 4. Si modificaste la sugerencia, explica que cambiaste y por que: No, ya que lo hizo de manera correcta sin grandes errores a la vista.
+
+Etapa 4: revision y anexos.
+
+1. El prompt exacto que enviaste a GitHub Copilot: haz una revision cuidadosa y analiza para saber si cumplen estos parametros y requerimientos, haz un plan para hacer pequeños cambios funcionales sin en dado caso se requieran:
+
+Restricciones tecnicas:
+- Solo HTML5, CSS3 y JavaScript vanilla (sin jQuery, Bootstrap ni frameworks).
+- No usar estilos inline ni etiquetas <font> o <center>.
+- El sitio debe ser visualmente prolijo, coherente y responsive en las secciones indicadas.
+
+tecnologias:
+
+-HTML5 semantico, CSS3 (Grid y Flexbox).
+-HTML5 con inputs semanticos, CSS3.
+-JavaScript vanilla (ES6+), DOM manipulation.
+
+2. La respuesta o sugerencia que recibiste (resumida o completa): He realizado una revisión exhaustiva del código implementado (HTML, CSS y JS) contrastándolo con las restricciones técnicas y los requerimientos establecidos.
+
+Análisis según los parámetros:
+Solo HTML5, CSS3 y JavaScript vanilla (sin frameworks):
+
+Cumple ✅: No se agregó ningún CDN ni archivos en formato jQuery, Bootstrap, Tailwind o similares. Toda la estructura y maquetado se basan estrictamente en HTML5 y puro CSS3. El archivo validaciones.js fue elaborado 100% en Vanilla JS (ES6).
+HTML5 Semántico y tipos de Inputs (DOM Manipulation):
+
+Cumple ✅: En index.html se utilizaron etiquetas como <header>, <nav>, <main>, <section>, y <footer>. En turnos.html se aplicaron los contenedores <fieldset>, <legend>, <label> correctamente vinculados al id respectivo, y en los campos se distinguen apropiadamente type="email", type="date", type="time", type="tel", etc.
+Flexbox y CSS Grid:
+
+Cumple ✅: En el archivo de estilos base, se aplicó display: flex para los médicos y los componentes del header. Del mismo modo, se implementó display: grid (grid-template-columns: repeat(auto-fit, minmax)) para desplegar correctamente las "Especialidades" y "Obras Sociales", lo cual provee el diseño de columnas requerido adaptándose al flujo lógico.
+Responsive design (Diseño responsivo / Media Queries):
+
+Cumple ✅: Las cajas utilizan max-width limitando de forma fluida el crecimiento y se emplearon Media Queries (@media max-width: 600px y 768px) para colapsar en formato móvil los bloques del header o los items en fila del formulario.
+No usar estilos inline ni etiquetas <font> o <center>:
+
+Casi perfecto ⚠️: No existen estas etiquetas prohibidas en el HTML. Sin embargo, analizando dinámicamente validaciones.js, identifiqué al final que al inyectar el código de éxito, incluí un atributo style: genérico que rompe la regla de "No utilizar estilos inline" (Por ejemplo: style="margin-top: 15px;...").
+
+3. Una explicacion con tus propias palabras de lo que hizo el codigo sugerido: En base al análisis, el proyecto es 99% funcional a los requerimientos técnicos y estructurales, pero identifiqué y acabo de corregir la pequeña restricción estipulada de no usar etiquetas de formato en JS.
+
+Cambios hechos (en base al análisis):
+
+Fui a validaciones.js y removí todo rastro de estilos en línea (style="margin-top...").
+Agregué, en reemplazo, identificadores limpios como class="success-turno-id" y class="success-btn".
+Injecté las propiedades directamente en turnos.css para respetar la independencia total de JavaScript, HTML y CSS.
+Tu landing page y formulario de solicitud de turno ahora cumplen al 100% con todas las restricciones técnicas e instrucciones. ¿Estás de acuerdo con el resultado o te gustaría que profundice en validar alguna funcionalidad particular desde el comportamiento visual de alguna pantalla?.
+
+4. Si modificaste la sugerencia, explica que cambiaste y por que: No parece que que el resultado fue el ideneo y no merece mas cambios.

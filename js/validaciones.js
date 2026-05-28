@@ -258,9 +258,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p><strong>Médico:</strong> ${medicoSelect.value}</p>
                     <p><strong>Fecha:</strong> ${fechaTurnoInput.value}</p>
                     <p><strong>Hora:</strong> ${horaTurnoInput.value} hs</p>
-                    <h3 style="margin-top: 15px; color: var(--primary-color);">Nro de Turno: ${turnoID}</h3>
+                    <h3 class="success-turno-id">Nro de Turno: ${turnoID}</h3>
                     <br>
-                    <a href="turnos.html" class="btn-primary" style="display:inline-block;">Solicitar otro turno</a>
+                    <a href="turnos.html" class="btn-primary success-btn">Solicitar otro turno</a>
                 </div>
             `;
         }
