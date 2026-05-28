@@ -162,3 +162,111 @@ Nota: Puse un archivo base validaciones.js vinculado al final de turnos.html par
 
 3. Una explicacion con tus propias palabras de lo que hizo el codigo sugerido: Interesante muy grato de como hizo el formulario, de manera limpia y con buena estructura.
 4. Si modificaste la sugerencia, explica que cambiaste y por que: No, ya que conisdero de que no hubo cambios que agregar.
+
+1. El prompt exacto que enviaste a GitHub Copilot: en js/validaciones.js.
+
+**Implementa todas las validaciones del formulario en el archivo js/validaciones.js. Las validaciones deben
+ejecutarse al hacer submit del formulario e indicar visualmente el estado de cada campo mediante clases
+CSS.
+
+Clases CSS para feedback visual.
+**Define en turnos.css las siguientes clases y aplicalas desde JavaScript:
+• campo-error: borde rojo, fondo rojo muy claro. Indica que el campo tiene un error.
+• campo-ok: borde verde, fondo verde muy claro. Indica que el campo es valido.
+• mensaje-error: texto de error pequeno de color rojo, visible debajo del campo.
+Reglas de validacion por campo
+-Seccion 1 - Datos del paciente:
+• Nombre y Apellido: obligatorio, solo letras y espacios (incluye tildes y ene). Expresion regular
+sugerida: /^[a-zA-ZaeiouAEIOUuUnnNN\s]+$/
+• DNI: obligatorio, entre 7 y 8 digitos numericos.
+• Email: obligatorio, formato valido (usar expresion regular).
+• Telefono: obligatorio, formato valido (puede contener +, guiones y espacios, minimo 8 digitos).
+• Fecha de nacimiento: obligatoria, no puede ser una fecha futura, la edad debe estar entre 0 y 120
+anos.
+-Seccion 2 - Datos del turno:
+• Especialidad: obligatoria (no puede quedar en la opcion vacia inicial).
+• Medico: obligatorio una vez que la especialidad esta seleccionada. Las opciones del select deben
+actualizarse dinamicamente al cambiar la especialidad, usando un objeto JavaScript con los
+medicos de cada especialidad.
+• Tipo de consulta: obligatorio.
+• Fecha del turno: obligatoria, no puede ser una fecha pasada, debe tener al menos 24 horas de
+anticipacion desde el momento actual, y debe corresponder a un dia de semana (lunes a viernes;
+rechazar sabados y domingos).
+• Hora del turno: obligatoria, debe estar dentro del horario de atencion (08:00 a 20:00).
+• Modalidad: obligatoria.
+• Plataforma preferida: obligatoria si la modalidad es "Videoconsulta".
+-Seccion 3 - Cobertura medica:
+• Cobertura: obligatoria.
+Evaluacion Sumativa 2 | Programacion Web | SaludPlus
+Pagina 8 de 10
+• Numero de credencial: obligatorio si la cobertura NO es "Particular". Debe tener al menos 5
+caracteres alfanumericos.
+• Plan: obligatorio si la cobertura NO es "Particular".
+-Seccion 4 - Informacion adicional:
+• Como nos conocio: obligatorio si el checkbox de primera visita esta marcado.
+• Motivo de consulta: obligatorio, minimo 20 caracteres.
+• Descripcion de estudios: obligatoria si el checkbox de estudios previos esta marcado; minimo 20
+caracteres.
+Comportamiento del formulario
+Campos condicionales
+Los siguientes campos deben mostrarse y ocultarse dinamicamente mediante JavaScript (modificando
+display: none / display: block):
+• Medico: se habilita y actualiza sus opciones cuando el usuario selecciona una especialidad.
+• Plataforma preferida: se muestra solo cuando la modalidad seleccionada es "Videoconsulta".
+• Numero de credencial y Plan: se muestran cuando la cobertura es distinta de "Particular".
+• Como nos conocio: se muestra cuando el checkbox de primera visita esta marcado.
+• Descripcion de estudios: se muestra cuando el checkbox de estudios previos esta marcado.
+Manejo del submit
+• Usar preventDefault() para evitar el envio del formulario por defecto.
+• Recorrer todos los campos y aplicar campo-error o campo-ok segun corresponda.
+• Si existe al menos un error, usar element.scrollIntoView({ behavior: "smooth" }) para desplazarse al
+primer campo invalido.
+• Si todos los campos son validos, mostrar un mensaje de confirmacion en pantalla con un numero de
+turno generado con Math.random() (formato: TURN-XXXXX, donde X son digitos).
+• El mensaje de confirmacion debe incluir: nombre del paciente, especialidad, fecha y hora del turno,
+y el numero de turno generado.
+Objeto de medicos por especialidad
+Define en validaciones.js un objeto JavaScript con la siguiente estructura (completa con al menos 2 medicos
+por especialidad):
+const medicosPorEspecialidad = {
+ "clinica": ["Dr. Gomez, Carlos", "Dra. Lopez, Maria"],
+ "cardiologia": ["Dr. Perez, Juan", "Dra. Torres, Ana"],
+ "pediatria": ["Dra. Diaz, Laura", "Dr. Soto, Pablo"],
+ "ginecologia": ["Dra. Romero, Valeria", "Dra. Castro, Elena"],
+ "traumatologia": ["Dr. Ramos, Sergio", "Dr. Herrera, Diego"],
+ "neurologia": ["Dr. Molina, Andres", "Dra. Vargas, Cecilia"]
+}; .
+
+2. La respuesta o sugerencia que recibiste (resumida o completa): He implementado exitosamente las validaciones en validaciones.js y configurado las clases de validación junto a sus estilos en turnos.css.
+
+A continuación, un resumen de la lógica aplicada en base a los requerimientos:
+
+Campos Condicionales Dinámicos (Mostrar/Ocultar con .hidden):
+
+Actúa sobre el select de especialidades para habilitar el campo del médico (disabled = false) y popular sus elementos <option> desde el objeto medicosPorEspecialidad.
+Muestra "Plataforma de Videoconsulta" sólo si la modalidad es videoconsulta.
+Muestra "Número de Credencial" y "Plan" sólo si la cobertura no es particular.
+Muestra "¿Cómo nos conoció?" sólo si marca el checkbox de primera visita.
+Muestra "Descripción de estudios" sólo si se marca el checkbox de estudios previos.
+Manejo de Submit y Validación Exclusiva Regex:
+
+Detiene el evento predeterminado del form con e.preventDefault().
+Se validan Nombre y Apellido (Sólo letras: /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/).
+Se valida el DNI con longitud obligada de 7 u 8 dígitos.
+El email se valida mediante Regex.
+La Fecha de nacimiento se chequea calculando la edad real y evitando superar los 120 años o que sea una fecha sin nacer.
+La Fecha de atención cuenta con el control de tener por lo menos 24 horas de anticipación exactas y además se restringe sólo a días laborables (lun - vie).
+Se chequean los caracteres mínimos (>= 20 para motivos de consulta, >= 5 para número de credencial).
+Feedback Visual de Validación:
+
+Si no cumple algunas de las reglas, se inyecta la clase CSS .campo-error al input/select, y se añade un <span> con .mensaje-error.
+Al instante detecta todas las validaciones que fueron satisfactorias y reasigna los estilos en tiempo real con --border-color: green (.campo-ok).
+Al encontrar errores, acciona element.scrollIntoView({behavior: "smooth"}) de forma predeterminada, deslizándose hasta el primer campo con fallos y advirtiendo al usuario del suceso.
+Confirmación Exitosa:
+
+Si todas las normativas se aprueban, se reemplaza la capa principal (dentro del contenedor) mostrando un éxito que detalla: Nombre compuesto del paciente, especialidad, médico, fecha/hora y te otorga tu número generado por el Math.random con el formato requerido TURN-XXXXX.
+El flujo completo se encuentra operativo y el ejercicio debería estar funcionalmente completo con todos los requerimientos atendidos. ¿Todo en orden o te interesaría hacer alguna última prueba? .
+
+3. Una explicacion con tus propias palabras de lo que hizo el codigo sugerido: El codigo que implemento, comples con las caondiciones/paremetros, estuve revisando y las validaciones funcionan correctamente.
+
+4. Si modificaste la sugerencia, explica que cambiaste y por que: No, ya que lo hizo de manera correcta sin grandes errores a la vista.
